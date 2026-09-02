@@ -19,4 +19,8 @@ public class ServiceProductos {
         }
         return lst;
     }
+
+    public Producto registrarProducto(Producto nuevo) {
+        return nuevo;
+    }
 }

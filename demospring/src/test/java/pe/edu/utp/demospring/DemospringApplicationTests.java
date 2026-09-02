@@ -33,5 +33,17 @@ class DemospringApplicationTests {
       assertEquals("5", result.getResponse().getContentAsString());
    }
 
+   @Test  
+   public void testBuscarProductoNoEncontrado() throws Exception {
+		System.out.println("Ejecutando testBuscarProductoNoEncontrado");
+	  URI uri = new URI("/producto/buscarPorNombre/aaa");
+      MockHttpServletRequestBuilder req =       
+          MockMvcRequestBuilders.get(uri).accept(MediaType.APPLICATION_JSON);
+      MvcResult result = mockMvc.perform(req).andReturn();
+      System.out.println("ESTADO: "+result.getResponse().getStatus());
+      System.out.println("ESTADO HttpStatus.NOT_FOUND: "+HttpStatus.NOT_FOUND);
+      assertEquals(HttpStatus.NOT_FOUND.value(), result.getResponse().getStatus());
+
+   }
 
 }

@@ -2,7 +2,7 @@ package pe.edu.utp.demospring;
 
 import org.mapstruct.Mapper;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface MapperProducto {
 
     Producto toDominio(RequestProducto request);

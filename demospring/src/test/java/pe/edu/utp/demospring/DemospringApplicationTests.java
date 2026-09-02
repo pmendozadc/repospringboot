@@ -46,4 +46,26 @@ class DemospringApplicationTests {
 
    }
 
+   @Test  
+   public void testRegistrarProducto() throws Exception {
+		System.out.println("Ejecutando testBuscarProductoNoEncontrado");
+	  URI uri = new URI("/producto/nuevo");
+      String json="""
+            {
+  
+  "descripcion": "Laptop2026",
+  "precio": 1299.99,
+  "stock": 0,
+  "fechaOrden": "2026-08-20",
+  "fechaVencimiento": "2027-08-20"
+}
+
+              """;;
+      MockHttpServletRequestBuilder req =       
+          MockMvcRequestBuilders.post(uri).contentType(MediaType.APPLICATION_JSON).content(json);
+      MvcResult result = mockMvc.perform(req).andReturn();
+      System.out.println("RESULTADO: "+result.getResponse().getContentAsString());
+      assertEquals(HttpStatus.NOT_FOUND.value(), result.getResponse().getStatus());
+
+   }
 }

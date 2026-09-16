@@ -1,0 +1,23 @@
+{
+  "name": "Java 25 + Spring Boot",
+  "image": "mcr.microsoft.com/devcontainers/java:25-bookworm",
+
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "25",
+      "installMaven": true,
+      "installGradle": true
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "vmware.vscode-spring-boot"
+      ]
+    }
+  },
+
+  "remoteUser": "vscode"
+}

@@ -20,11 +20,12 @@ public class ControllerProductos {
 
     private final MapperProducto mapperProducto; 
 
-    
+    private final RepoProducto repoProducto;
 
-    public ControllerProductos(ServiceProductos serviceProductos, MapperProducto mapperProducto) {
+    public ControllerProductos(ServiceProductos serviceProductos, MapperProducto mapperProducto, RepoProducto repoProducto) {
         this.serviceProductos = serviceProductos;
         this.mapperProducto = mapperProducto;
+        this.repoProducto=repoProducto;
     }
 
 
@@ -34,11 +35,17 @@ public class ControllerProductos {
         return serviceProductos.consultarProductosPorNombre(nombre);
     }
 
-    @PostMapping("/producto/nuevo")
-    public ResponseProducto registrar(@Valid @RequestBody RequestProducto nuevo) {
-        Producto pro = mapperProducto.toDominio(nuevo);
-        ResponseProducto resp = mapperProducto.toResponse(serviceProductos.registrarProducto(pro));
-        return resp;
+    @GetMapping("/productomarca")
+    public Producto registrarProductoMarca() {
+        Producto pro = new Producto();
+        pro.setDescripcion("ejemplo");
+        pro.setNombre("ejemplo");
+        pro.setPrecio(100);
+        Marca marca = new Marca();
+        marca.setNombre("ABC");
+        pro.setMarca(marca);
+        repoProducto.save(pro);
+        return pro;
     }
     
 }

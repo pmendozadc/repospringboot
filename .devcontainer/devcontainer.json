@@ -1,16 +1,22 @@
 {
   "name": "Java 25 + Spring Boot",
-
   "image": "mcr.microsoft.com/devcontainers/java:25-bookworm",
-
+  "forwardPorts": [8080],
+  "portsAttributes": {
+    "8080": {
+      "label": "Spring Boot API",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
         "vscjava.vscode-java-pack",
-        "vmware.vscode-spring-boot"
+        "vmware.vscode-spring-boot",
+        "humao.rest-client"
       ]
     }
   },
-
   "remoteUser": "vscode"
 }

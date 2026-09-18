@@ -1,8 +1,9 @@
-package pe.edu.utp.demospring.cu.registrarpedido.request;
+package pe.edu.utp.demospring.cu.registrarpedido;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import pe.edu.utp.demospring.dominio.entity.Pedido;
+import pe.edu.utp.demospring.cu.registrarpedido.request.RequestPedido;
+import pe.edu.utp.demospring.cu.registrarpedido.response.ResponsePedido;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

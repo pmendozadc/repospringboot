@@ -1,4 +1,4 @@
-package pe.edu.utp.demospring.cu.registrarpedido.request;
+package pe.edu.utp.demospring.cu.registrarpedido.response;
 
 import java.util.List;
 

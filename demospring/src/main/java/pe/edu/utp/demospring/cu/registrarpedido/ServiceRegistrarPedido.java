@@ -1,11 +1,13 @@
-package pe.edu.utp.demospring.cu.registrarpedido.request;
+package pe.edu.utp.demospring.cu.registrarpedido;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import pe.edu.utp.demospring.cu.registrarpedido.request.RequestPedido;
 import pe.edu.utp.demospring.cu.registrarpedido.request.RequestPedido.RequestPedidoItem;
+import pe.edu.utp.demospring.cu.registrarpedido.response.ResponsePedido;
 import pe.edu.utp.demospring.dominio.entity.Pedido;
 import pe.edu.utp.demospring.dominio.entity.Producto;
 import pe.edu.utp.demospring.dominio.repository.RepoPedido;
@@ -28,7 +30,7 @@ public class ServiceRegistrarPedido {
         List<ResponsePedido.ResponsePedidoItem> lst = new ArrayList<ResponsePedido.ResponsePedidoItem>();
         for (RequestPedidoItem item : pedido.items()) {
             Producto producto = repoProducto.findById(item.idProducto()).get();
-            p.agregarItem(producto, item.cantidad(), item.precio());
+            p.agregarItem(producto, item.cantidad(), item.precioUnitario());
             lst.add(new ResponsePedido.ResponsePedidoItem(producto.getNombre(), item.cantidad()));
      }
         repoPedido.save(p);

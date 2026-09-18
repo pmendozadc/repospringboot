@@ -39,9 +39,10 @@ public class Pedido {
 
     public void agregarItem(Producto producto, int cantidad, Double precioUnitario) {
         PedidoItem item = new PedidoItem();
-        //item.setPedido(this);
         item.setProducto(producto);
         item.setPrecioUnitario(precioUnitario);
+        item.setPedido(this);
+        item.setCantidad(cantidad);
         items.add(item);
     }
 

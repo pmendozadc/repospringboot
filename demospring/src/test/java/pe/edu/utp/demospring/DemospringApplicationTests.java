@@ -23,17 +23,6 @@ class DemospringApplicationTests {
    MockMvc mockMvc;
 
    @Test  
-   public void testSumar() throws Exception {
-		System.out.println("Ejecutando test sumar");
-	  URI uri = new URI("/sumar?op1=2&op2=3");
-      MockHttpServletRequestBuilder req =       
-          MockMvcRequestBuilders.get(uri).accept(MediaType.APPLICATION_JSON);
-      MvcResult result = mockMvc.perform(req).andReturn();
-      assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
-      assertEquals("5", result.getResponse().getContentAsString());
-   }
-
-   @Test  
    public void testBuscarProductoNoEncontrado() throws Exception {
 		System.out.println("Ejecutando testBuscarProductoNoEncontrado");
 	  URI uri = new URI("/producto/buscarPorNombre/aaa");

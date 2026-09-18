@@ -1,4 +1,4 @@
-package pe.edu.utp.demospring;
+package pe.edu.utp.demospring.exception;
 
 import java.util.stream.Collectors;
 
@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import pe.edu.utp.demospring.cu.administrarproductos.exception.ProductoNoEncontradoException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler { 

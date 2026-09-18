@@ -1,4 +1,4 @@
-package pe.edu.utp.demospring;
+package pe.edu.utp.demospring.cu.administrarproductos;
 
 import java.util.List;
 
@@ -8,6 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
+import pe.edu.utp.demospring.cu.administrarproductos.mapper.MapperProducto;
+import pe.edu.utp.demospring.cu.administrarproductos.response.ResponseProducto;
+import pe.edu.utp.demospring.dominio.entity.Marca;
+import pe.edu.utp.demospring.dominio.entity.Producto;
+import pe.edu.utp.demospring.dominio.repository.RepoProducto;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,7 +36,7 @@ public class ControllerProductos {
 
 
     @GetMapping("/producto/buscarPorNombre/{nombre}")
-    public List<DTOProductoResponse> buscarPorNombre(@PathVariable(name = "nombre") String nombre) {
+    public List<ResponseProducto> buscarPorNombre(@PathVariable(name = "nombre") String nombre) {
         return serviceProductos.consultarProductosPorNombre(nombre);
     }
 

@@ -1,4 +1,4 @@
-package pe.edu.utp.demospring;
+package pe.edu.utp.demospring.cu.administrarproductos.exception;
 
 public class ProductoNoEncontradoException extends RuntimeException {
 

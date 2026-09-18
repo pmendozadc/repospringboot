@@ -1,4 +1,4 @@
-package pe.edu.utp.demospring;
+package pe.edu.utp.demospring.cu.administrarproductos.request;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package pe.edu.utp.demospring;
+package pe.edu.utp.demospring.dominio.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

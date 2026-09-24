@@ -37,4 +37,14 @@ public class ServiceRegistrarPedido {
         ResponsePedido respPedido = new ResponsePedido(p.getId(), lst);
         return respPedido;
     }
+
+    public List<ResponsePedido> buscarPedidoPorProductoId(int productoId) {
+        List<Pedido> lstPedido = repoPedido.buscarPorProductoId(productoId);
+        return lstPedido.stream().map(p->new ResponsePedido(p.getId(), p.getItems().stream().map(i->new ResponsePedido.ResponsePedidoItem(i.getProducto().getNombre(), i.getCantidad())).toList())).toList();
+    }
+
+    public List<ResponsePedido> buscarPedidoPorProductoNombre(String productoNombre) {
+        List<Pedido> lstPedido = repoPedido.buscarPorProductoNombre("%"+productoNombre+"%");
+        return lstPedido.stream().map(p->new ResponsePedido(p.getId(), p.getItems().stream().map(i->new ResponsePedido.ResponsePedidoItem(i.getProducto().getNombre(), i.getCantidad())).toList())).toList();
+    }
 }

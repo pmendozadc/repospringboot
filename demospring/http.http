@@ -1,5 +1,5 @@
 ### Registrar pedido
-POST https://special-palm-tree-wrg4pggwx454fgx6-8080.app.github.dev/pedido/nuevo
+POST https://humble-space-computing-machine-q7pxjppw65xph46jp-8080.app.github.dev/pedido/nuevo
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
    },
    {
      "idProducto": 1005,
-     "cantidad": 3,
+     "cantidad": 4,
      "precioUnitario":50
    }
  ]

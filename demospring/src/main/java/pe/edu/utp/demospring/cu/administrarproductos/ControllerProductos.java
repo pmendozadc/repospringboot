@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import pe.edu.utp.demospring.cu.administrarproductos.mapper.MapperProducto;
+import pe.edu.utp.demospring.cu.administrarproductos.request.RequestAjusteStock;
+import pe.edu.utp.demospring.cu.administrarproductos.request.RequestProducto;
 import pe.edu.utp.demospring.cu.administrarproductos.response.ResponseProducto;
 import pe.edu.utp.demospring.dominio.entity.Marca;
 import pe.edu.utp.demospring.dominio.entity.Producto;
 import pe.edu.utp.demospring.dominio.repository.RepoProducto;
+
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,13 +26,10 @@ public class ControllerProductos {
     
     private final ServiceProductos serviceProductos;
 
-    private final MapperProducto mapperProducto; 
-
     private final RepoProducto repoProducto;
 
-    public ControllerProductos(ServiceProductos serviceProductos, MapperProducto mapperProducto, RepoProducto repoProducto) {
+    public ControllerProductos(ServiceProductos serviceProductos, RepoProducto repoProducto) {
         this.serviceProductos = serviceProductos;
-        this.mapperProducto = mapperProducto;
         this.repoProducto=repoProducto;
     }
 
@@ -40,17 +40,19 @@ public class ControllerProductos {
         return serviceProductos.consultarProductosPorNombre(nombre);
     }
 
-    @GetMapping("/productomarca")
-    public Producto registrarProductoMarca() {
-        Producto pro = new Producto();
-        pro.setDescripcion("ejemplo");
-        pro.setNombre("ejemplo");
-        pro.setPrecio(100);
-        Marca marca = new Marca();
-        marca.setNombre("ABC");
-        pro.setMarca(marca);
-        repoProducto.save(pro);
-        return pro;
+    @GetMapping("/producto/{id}")
+    public Producto consultarProductoPorId(@PathVariable(name = "id") int id) {
+        return serviceProductos.consultarProductosPorId(id);
+    }
+
+    @PostMapping("/producto/marca/{idmarca}/nuevo")
+    public Producto registrarProductoMarca(@RequestBody RequestProducto requestProducto, @PathVariable(name = "idmarca") int idMarca) {
+        return serviceProductos.registrarProducto(requestProducto, idMarca);
+    }
+
+    @PostMapping("/producto/stock/ajuste")
+    public Producto ajustarProductoStock(@RequestBody RequestAjusteStock requestStock) {
+        return serviceProductos.ajustarProductoStock(requestStock);
     }
     
 }

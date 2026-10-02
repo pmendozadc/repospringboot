@@ -8,11 +8,29 @@ Content-Type: application/json
      "idProducto": 1004,
      "cantidad": 2,
      "precioUnitario":3000
-   },
-   {
-     "idProducto": 1005,
-     "cantidad": 4,
-     "precioUnitario":50
    }
  ]
 }
+
+### Registrar producto
+POST https://humble-space-computing-machine-q7pxjppw65xph46jp-8080.app.github.dev/producto/marca/1001/nuevo
+Content-Type: application/json
+
+{
+ "nombre":"RAQUETA",
+"descripcion": "RAQUETA DE TENIS",
+	"precio":600,
+	"stock":3
+}
+
+### Ajustar stock
+POST https://humble-space-computing-machine-q7pxjppw65xph46jp-8080.app.github.dev/producto/stock/ajuste
+Content-Type: application/json
+
+{
+  "idProducto": 1004,
+  "stock": 4
+}
+
+### Consultar producto por id
+GET https://humble-space-computing-machine-q7pxjppw65xph46jp-8080.app.github.dev/producto/1007

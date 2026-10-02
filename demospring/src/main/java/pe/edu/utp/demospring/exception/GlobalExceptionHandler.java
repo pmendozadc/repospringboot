@@ -19,7 +19,7 @@ public class GlobalExceptionHandler {
 		return ResponseEntity .status(HttpStatus.NOT_FOUND) .body(ex.getMessage()); 
 	}
 
-	@ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<String> handleValidation(
             MethodArgumentNotValidException ex) {
         String message = ex.getBindingResult()
@@ -29,4 +29,10 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.joining(", "));
         return ResponseEntity.badRequest().body(message);
     }
+
+    @ExceptionHandler(RuntimeException.class) 
+	public ResponseEntity<String> manejarRuntimeException( 
+		RuntimeException ex) { 
+		return ResponseEntity .status(HttpStatus.INTERNAL_SERVER_ERROR) .body(ex.getMessage()); 
+	}
 }

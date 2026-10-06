@@ -6,7 +6,7 @@ Content-Type: application/json
  "items":[
    {
      "idProducto": 1004,
-     "cantidad": 2,
+     "cantidad": 20,
      "precioUnitario":3000
    }
  ]

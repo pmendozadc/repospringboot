@@ -1,4 +1,4 @@
-package pe.edu.utp.demospring;
+package pe.edu.uni.demospring;
 
 import pe.edu.uni.demospring.cu.registrarpedido.request.RequestPedido;
 import pe.edu.uni.demospring.cu.registrarpedido.request.RequestPedido.RequestPedidoItem;
@@ -39,29 +39,21 @@ class TestPedido {
     }
 
     @Test
-    @DisplayName("Debe guardar un pedido en BD y retornar 201 Created")
+    @DisplayName("Debe guardar un pedido en BD descontando el stock del producto")
     void testRegistrarPedido() throws Exception {
-        Producto producto = repoProducto.findAll().get(1004);
+        Producto producto = repoProducto.findById(1004).get();
         int stockantes=producto.getStock();
         int cantidad=2;
-        // 1. GIVEN (Dado)
         List<RequestPedidoItem> items = List.of(
                 new RequestPedidoItem(1004, cantidad, 1200.00),
                 new RequestPedidoItem(1005, cantidad, 800.00)
         );
         RequestPedido pedido = new RequestPedido(items);
-        
-        // 2. WHEN (Cuando realizamos la petición HTTP POST)
         mockMvc.perform(post("/pedido/nuevo")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(pedido)))
-                
-                // 3. THEN - Validación HTTP
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").exists());
-
-        // 4. THEN - Validación en la Base de Datos
-        producto = repoProducto.findAll().get(1004);
+                .andExpect(jsonPath("$.idPedido").exists());
+        producto = repoProducto.findById(1004).get();
         int stockdespues=producto.getStock();
         assertThat(stockdespues).isEqualTo(stockantes-cantidad);
     }

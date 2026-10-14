@@ -1,4 +1,4 @@
-package pe.edu.utp.demospring;
+package pe.edu.uni.demospring;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

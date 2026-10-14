@@ -37,7 +37,7 @@ public class ServiceRegistrarPedido {
             System.out.println(
         System.currentTimeMillis()+ " DESPUES DE FIND "+ Thread.currentThread().getName()+ " stock=" + producto.getStock());
             try {
-                Thread.sleep(10000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }

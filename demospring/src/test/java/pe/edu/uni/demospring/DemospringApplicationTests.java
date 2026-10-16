@@ -37,8 +37,8 @@ class DemospringApplicationTests {
 
    @Test  
    public void testRegistrarProducto() throws Exception {
-		System.out.println("Ejecutando testBuscarProductoNoEncontrado");
-	  URI uri = new URI("/producto/nuevo");
+		System.out.println("Ejecutando testRegistrarProducto");
+	  URI uri = new URI("/producto/marca/1/nuevo");
       String json="""
             {
   
@@ -54,7 +54,7 @@ class DemospringApplicationTests {
           MockMvcRequestBuilders.post(uri).contentType(MediaType.APPLICATION_JSON).content(json);
       MvcResult result = mockMvc.perform(req).andReturn();
       System.out.println("RESULTADO: "+result.getResponse().getContentAsString());
-      assertEquals(HttpStatus.NOT_FOUND.value(), result.getResponse().getStatus());
+      assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
 
    }
 }

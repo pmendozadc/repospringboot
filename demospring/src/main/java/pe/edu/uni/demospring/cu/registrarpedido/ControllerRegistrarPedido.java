@@ -26,6 +26,11 @@ public class ControllerRegistrarPedido {
     public ResponsePedido guardarPedido(@RequestBody RequestPedido pedido) {
         return serviceRegistrarPedido.registrarPedido(pedido);
     }
+
+    @PostMapping("/pedido/nuevo/sinlock")
+    public ResponsePedido guardarPedidoSinLock(@RequestBody RequestPedido pedido) {
+        return serviceRegistrarPedido.registrarPedidoSinLock(pedido);
+    }
     
     @GetMapping("/pedido/producto/id/{id}")
     public List<ResponsePedido> consultarPedidoPorProductoId(@PathVariable(name = "id") int idProducto) {

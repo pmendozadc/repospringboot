@@ -4,7 +4,7 @@
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "version": "22",
-      "globalPackages": "@angular/cli"
+      "globalPackages": "@angular/cli@20"
     }
   },
   "forwardPorts": [8080, 4200],

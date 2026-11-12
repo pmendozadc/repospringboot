@@ -27,6 +27,11 @@ public class ServiceProductos {
         this.repoMarca = repoMarca;
     }
 
+    public List<Producto> consultarProductos() {
+        List<Producto> lst = repoProducto.findAll(); 
+        return lst;
+    }
+
     public Producto consultarProductosPorId(int id) {
         Optional<Producto> p = repoProducto.findById(id); 
         if (!p.isPresent()) {

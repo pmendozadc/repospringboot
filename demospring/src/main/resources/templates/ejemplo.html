@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 30px;
+        }
+
+        .producto {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+        .precio {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Catálogo de productos</h1>
+
+    <div th:each="producto : ${productos}" class="producto">
+
+        <h2 th:text="${producto.nombre}"></h2>
+
+        <p th:text="${producto.descripcion}"></p>
+
+        <p class="precio">
+            S/ <span th:text="${producto.precio}"></span>
+        </p>
+
+    </div>
+
+</body>
+</html>

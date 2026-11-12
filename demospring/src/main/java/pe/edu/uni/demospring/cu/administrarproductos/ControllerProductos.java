@@ -39,6 +39,12 @@ public class ControllerProductos {
         return serviceProductos.consultarProductosPorNombre(nombre);
     }
 
+    @GetMapping("/productos")
+    public List<Producto> consultarProductos() {
+        List<Producto> productos = serviceProductos.consultarProductos();
+        return productos;
+    }
+
     @GetMapping("/producto/{id}")
     public Producto consultarProductoPorId(@PathVariable(name = "id") int id) {
         return serviceProductos.consultarProductosPorId(id);

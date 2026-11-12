@@ -3,6 +3,6 @@ import { FormTemplateDemo } from './form-template-demo/form-template-demo';
 
 export const routes: Routes = [
     {
-        path:'', component: FormTemplateDemo,title  :'Formulario demo' 
+        path:'demo', component: FormTemplateDemo,title  :'Formulario demo' 
     }
 ];

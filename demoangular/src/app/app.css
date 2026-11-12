@@ -32,7 +32,11 @@
 .nav-links a:hover {
   color: #00bcd4;
 }
-
+.nav-links a.active-link {
+  color: #00bcd4;
+  border-bottom: 2px solid #00bcd4;
+  padding-bottom: 5px;
+}
 .menu-toggle {
   display: none;
   font-size: 28px;

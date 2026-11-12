@@ -22,4 +22,29 @@ export class App {
     { id: 3, nombre: 'Monitor 4K', precio: 350, disponible: false },
     { id: 4, nombre: 'Ratón Ergonómico', precio: 45, disponible: true }
   ];
+
+  // Control del menú responsive
+  menuAbierto = false;
+
+  // Control de la ventana modal
+  modalAbierto = false;
+
+  toggleMenu(): void {
+    this.menuAbierto = !this.menuAbierto;
+  }
+
+  abrirModal(): void {
+    this.modalAbierto = true;
+  }
+
+  cerrarModal(): void {
+    this.modalAbierto = false;
+  }
+
+  toggleModal(event: MouseEvent): void {
+    if (event.target === event.currentTarget) {
+      this.cerrarModal();
+    }
+  }
+
 }

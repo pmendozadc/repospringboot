@@ -2,7 +2,9 @@ package pe.edu.uni.demospring.cu.administrarparametros;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,18 @@ public class ControllerParametros {
 
     static {
         params.put("IGV", 0.18);
+    }
+
+    @GetMapping("/params")
+    public List<Map<String, Object>> consultarParametros() {
+        List<Map<String, Object>> lst = new ArrayList<Map<String, Object>>();
+        params.keySet().forEach(k->{
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("id", k);
+            map.put("valor", params.get(k));
+            lst.add(map);
+        });
+        return lst;
     }
 
     @GetMapping("/param/{id}")

@@ -32,6 +32,11 @@ public class ControllerProductos {
         this.repoProducto=repoProducto;
     }
 
+    @GetMapping("/productos")
+    public List<Producto> consultarProductos() {
+        List<Producto> productos = serviceProductos.consultarProductos();
+        return productos;
+    }
 
 
     @GetMapping("/producto/buscarPorNombre/{nombre}")
@@ -39,12 +44,7 @@ public class ControllerProductos {
         return serviceProductos.consultarProductosPorNombre(nombre);
     }
 
-    @GetMapping("/productos")
-    public List<Producto> consultarProductos() {
-        List<Producto> productos = serviceProductos.consultarProductos();
-        return productos;
-    }
-
+    
     @GetMapping("/producto/{id}")
     public Producto consultarProductoPorId(@PathVariable(name = "id") int id) {
         return serviceProductos.consultarProductosPorId(id);

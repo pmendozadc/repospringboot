@@ -1,70 +1,18 @@
-
 <header>
   <nav class="navbar">
-
-    <h1 class="logo">MiSitio</h1>
-
-    <ul class="nav-links"
-        [class.active]="menuAbierto">
-
+    <span class="menu-toggle" (click)="toggleMenu()">☰</span>
+    <span class="logo">MiSitio</span>
+    <ul class="nav-links" [class.active]="menuAbierto">
       <li>
-        <a routerLink="demo"
-   routerLinkActive="active-link" (click)="menuAbierto = false">
-   Demo
-</a>
+        <a routerLink="/productos" (click)="menuAbierto = false">Productos</a>
       </li>
-
       <li>
-        <a href="#" (click)="menuAbierto = false">Servicios</a>
+        <a routerLink="/productos" (click)="menuAbierto = false">Servicios</a>
       </li>
-
       <li>
-        <a href="#" (click)="menuAbierto = false">Contacto</a>
-      </li>
-
+        <a routerLink="/productos" (click)="menuAbierto = false">Contacto</a>
+      </li>      
     </ul>
-
-    <div class="menu-toggle"
-         (click)="toggleMenu()">
-
-      ☰
-
-    </div>
-
   </nav>
 </header>
-
-<!-- Botón para abrir modal -->
-<button class="btn-open"
-        (click)="abrirModal()">
-
-  Abrir ventana
-
-</button>
-
-<!-- Ventana modal -->
-@if (modalAbierto) {
-
-  <div class="modal"
-       (click)="toggleModal($event)">
-
-    <div class="modal-content">
-
-      <span class="close"
-            (click)="cerrarModal()">
-
-        &times;
-
-      </span>
-
-      <h2>Título del Modal</h2>
-
-      <p>Contenido del modal</p>
-
-    </div>
-
-  </div>
-
-}
-
 <router-outlet />

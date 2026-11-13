@@ -1,0 +1,20 @@
+<div class="modal">
+  <div class="modal-content">
+
+    <h2>Editar producto</h2>
+
+    <form>
+      <label>Nombre:</label>
+      <input type="text" [value]="producto()?.nombre">
+
+      <label>Precio:</label>
+      <input type="number" [value]="producto()?.precio">
+
+      <div class="botones">
+        <button type="button" (click)="cerrar.emit()">Cancelar</button>
+        <button type="submit">Guardar</button>
+      </div>
+    </form>
+
+  </div>
+</div>

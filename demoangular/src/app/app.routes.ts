@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { FormTemplateDemo } from './form-template-demo/form-template-demo';
+import { ViewProductos } from './cu/administrar-productos/view-productos/view-productos';
 
 export const routes: Routes = [
     {
-        path:'demo', component: FormTemplateDemo,title  :'Formulario demo' 
+        path:'productos', component: ViewProductos,title  :'Vista de productos' 
     }
 ];

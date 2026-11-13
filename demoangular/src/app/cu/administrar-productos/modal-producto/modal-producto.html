@@ -1,15 +1,12 @@
 <div class="modal">
   <div class="modal-content">
-
     <h2>Editar producto</h2>
 
-    <form>
+    <form #miForm="ngForm" (ngSubmit)="onGuardar(miForm)">
       <label>Nombre:</label>
-      <input type="text" [value]="producto()?.nombre">
-
+      <input type="text" [(ngModel)]="producto()!.nombre" name="nombre" >
       <label>Precio:</label>
-      <input type="number" [value]="producto()?.precio">
-
+      <input type="number" [(ngModel)]="producto()!.precio" name="precio" >
       <div class="botones">
         <button type="button" (click)="cerrar.emit()">Cancelar</button>
         <button type="submit">Guardar</button>

@@ -10,6 +10,9 @@
   </thead>
 
   <tbody>
+    <button (click)="irAProductoNuevo()">
+       Nuevo Producto
+    </button>
     @for (producto of productos; track producto.id) {
       <tr>
         <td>{{ producto.id }}</td>

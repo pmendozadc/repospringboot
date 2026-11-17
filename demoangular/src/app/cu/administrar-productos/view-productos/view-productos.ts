@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalProducto } from '../modal-producto/modal-producto'
 
 @Component({
@@ -8,6 +9,8 @@ import { ModalProducto } from '../modal-producto/modal-producto'
   styleUrl: './view-productos.css',
 })
 export class ViewProductos {
+
+  private router = inject(Router);
 
   productos: any[] = [
     { id: 1, nombre: 'Laptop Pro', precio: 1200, disponible: true },
@@ -28,5 +31,10 @@ editarProducto(producto: any) {
 cerrarModal() {
   this.mostrarModal = false;
   this.productoSeleccionado = null;
+}
+
+irAProductoNuevo() {
+  this.router.navigate(['/producto/nuevo']);
+  this.router.navigate(['/producto', 15]);
 }
 }

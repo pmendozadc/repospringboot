@@ -1,4 +1,7 @@
 <h2>Lista de productos</h2>
+<button (click)="irAProductoNuevo()">
+    Nuevo Producto
+</button>
 
 <table>
   <thead>
@@ -10,9 +13,6 @@
   </thead>
 
   <tbody>
-    <button (click)="irAProductoNuevo()">
-       Nuevo Producto
-    </button>
     @for (producto of productos; track producto.id) {
       <tr>
         <td>{{ producto.id }}</td>
@@ -20,7 +20,17 @@
         <td>{{ producto.precio }}</td>
         <td>
           <button (click)="editarProducto(producto)">
-            Editar
+            Editar (modal)
+          </button>
+        </td>
+        <td>
+          <button (click)="irAProductoEdicion(producto.id)">
+            Editar (pasando params)
+          </button>
+        </td>
+        <td>
+          <button (click)="irAProductoEdicionConObjeto(producto)">
+            Editar (pasando objeto)
           </button>
         </td>
       </tr>

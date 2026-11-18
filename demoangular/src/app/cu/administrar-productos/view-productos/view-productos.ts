@@ -35,6 +35,17 @@ cerrarModal() {
 
 irAProductoNuevo() {
   this.router.navigate(['/producto/nuevo']);
-  this.router.navigate(['/producto', 15]);
+}
+
+irAProductoEdicion(id:Number) {
+  this.router.navigate(['/producto',id]);
+}
+
+irAProductoEdicionConObjeto(producto:any) {
+  this.router.navigate(['/producto',producto.id], {
+    state: {
+      producto: producto
+    }
+  });
 }
 }

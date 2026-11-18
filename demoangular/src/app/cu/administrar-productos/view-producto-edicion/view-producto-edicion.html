@@ -1,1 +1,17 @@
-<p>view-producto-edicion works!</p>
+<div >
+<h2>Editar producto</h2>
+
+<form #miForm="ngForm" (ngSubmit)="onActualizar(miForm)">
+    <label>ID:</label>
+    <label>{{ productoId }}</label>
+    <label>Nombre:</label>
+    <input type="text" [(ngModel)]="producto.nombre" name="nombre">
+    <label>Precio:</label>
+    <input type="number" [(ngModel)]="producto.precio" name="precio">
+    <div class="botones">
+    <button type="button" (click)="onCancelar()">Cancelar</button>
+    <button type="submit">Actualizar</button>
+    </div>
+</form>
+
+</div>

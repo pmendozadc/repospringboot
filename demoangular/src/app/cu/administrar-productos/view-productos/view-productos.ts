@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalProducto } from '../modal-producto/modal-producto'
+import { inject, Injectable } from '@angular/core';
+import { ServiceAdministrarProductos } from '../service-administrar-productos';
 
 @Component({
   selector: 'app-view-productos',
@@ -12,15 +14,18 @@ export class ViewProductos {
 
   private router = inject(Router);
 
-  productos: any[] = [
-    { id: 1, nombre: 'Laptop Pro', precio: 1200, disponible: true },
-    { id: 2, nombre: 'Teclado Mecánico', precio: 85, disponible: true },
-    { id: 3, nombre: 'Monitor 4K', precio: 350, disponible: false },
-    { id: 4, nombre: 'Ratón Ergonómico', precio: 45, disponible: true }
-  ];
+  productos!: any[];
 
   mostrarModal = false;
 
+  private serviceAdministrarProductos = inject(ServiceAdministrarProductos);
+
+  ngOnInit(): void {
+    this.serviceAdministrarProductos.getProductos().subscribe({
+    next: (data) => console.log('Datos recibidos del servicio:', data),
+    error: (err) => console.error('Error al llamar al servicio:', err),
+    });
+  }
 productoSeleccionado: any = null;
 
 editarProducto(producto: any) {

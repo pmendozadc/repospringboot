@@ -6,7 +6,7 @@
       "version": "22"
     }
   },
-  "postCreateCommand": "npm install -g @angular/cli@20 && curl -fsSL https://archive.apache.org/dist/artemis/artemis/2.57.0/apache-artemis-2.57.0-bin.tar.gz -o /tmp/artemis.tar.gz && sudo mkdir -p /opt/artemis && sudo tar -xzf /tmp/artemis.tar.gz -C /opt/artemis --strip-components=1 && rm /tmp/artemis.tar.gz && /opt/artemis/bin/artemis create ~/artemis-broker --user admin --password admin --require-login --http-host 0.0.0.0 --relax-jolokia",
+  "postCreateCommand": "npm install -g @angular/cli@20 && curl -fsSL https://archive.apache.org/dist/artemis/artemis/2.57.0/apache-artemis-2.57.0-bin.tar.gz -o /tmp/artemis.tar.gz && sudo mkdir -p /opt/artemis && sudo tar -xzf /tmp/artemis.tar.gz -C /opt/artemis --strip-components=1 && rm /tmp/artemis.tar.gz && /opt/artemis/bin/artemis create ~/artemis-broker --user admin --password admin --require-login --http-host 0.0.0.0 --relax-jolokia && sed -i 's|<allow-origin>\\*://0.0.0.0\\*</allow-origin>|<allow-origin>*://*.app.github.dev*</allow-origin>|g' ~/artemis-broker/etc/jolokia-access.xml",
   "postStartCommand": "~/artemis-broker/bin/artemis-service start",
   "forwardPorts": [8080, 4200, 8161, 61616],
   "portsAttributes": {
